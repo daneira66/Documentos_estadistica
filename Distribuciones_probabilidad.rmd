@@ -1,0 +1,44 @@
+---
+title: "Distribuciones de probabilidad"
+author: "Daniel Alejandro Neira Sierra"
+date: "1 de mayo de 2020"
+output: 
+  html_document:
+    toc: yes
+    toc_float: yes
+    number_section: yes
+    theme: yeti
+---
+
+# Introducción
+
+Una distribución de probabilidad es el conjunto de probabilidades que pueden presentar variables aleatorias que son generadas por experimentos aleatorios con funciones de probabilidad específicas, los cuales generan variables con la misma distribucion de probabilidad cuando presentan carácteristicas similares entre sí (Wackerly et al., 2010).
+
+Las distribuciones de probabilidad estan determinadas por la función de densidad de probabilidad y la función de distribución acumulada, las cuales asignan los valores correspondientes a la probabilidad de cada evento de la variable aleatoria; observandose que, la función de densidad asigna la probabilidad de que la variable tome un valor en particular, mientras que la función de distribución asigna la probabilidad acumulada para un grupo de eventos de la variable aleatoria.
+
+Teniendo en cuenta esto, la función de densidad puede ser definida como: 
+$$f_x(X)=P(X=x)$$
+Y la función de distribución acumulada se puede definir como:
+$$F_x(X)=P(X\leq x)$$
+
+Dado lo anterior, se tiene que las distribuciones de probabilidad pueden clasificarse de acuerdo con la forma de su función de distribución, pudiendo ser distribuciones discretas, en los casos donde esta función es discontinúa o segmentada y presenta saltos en sus valores, o distribuciones continúas cuando la función no presenta ningún tipo de interrupciones entre sus valores (Blanco et al., 2010).
+
+Asociadas a las distribuciones de probabilidad, para cada variable aleatoria es posible obtener el valor esperado que puede tomar dada la función de densidad con la que cuente, este valor es conocido como la _Esperanza_ y suele representarse como $E[X]$, y se puede definir como:
+$$E[X]=\sum_{i=1}^n x_i f_x(X)$$
+
+Igualmente, a partir de la función de densidad tambien puede obtenerse la medida de variación de la variable aleatoria, la cual se conoce como la _Varianza_ y se suele representar como $VAR[X]$ o $V[X]$, y se puede definir como:
+$$V[X]=E[(x-E[X])^2]$$
+Dada esta expresión, se tiene entonces que la varianza es igual a:
+$$V[X]=E[x^2]-E[X]^2$$
+
+# Distribuciones discretas
+
+## Distribución binomial
+
+### Esperanza binomial
+
+$$E[X]=np$$
+
+### Varianza binomial
+$$V[X]=npq$$
+
