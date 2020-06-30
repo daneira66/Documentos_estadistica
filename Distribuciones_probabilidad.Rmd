@@ -1,0 +1,93 @@
+---
+title: "Distribuciones de probabilidad"
+author: "Daniel Alejandro Neira Sierra"
+date: "1 de mayo de 2020"
+output: 
+  html_document:
+    toc: yes
+    toc_float: yes
+    number_section: yes
+    theme: yeti
+---
+
+# Introducción
+
+Una distribución de probabilidad es el conjunto de probabilidades que pueden presentar variables aleatorias que son generadas por experimentos aleatorios con funciones de probabilidad específicas, los cuales generan variables con la misma distribucion de probabilidad cuando presentan carácteristicas similares entre sí (Wackerly et al., 2010).
+
+Las distribuciones de probabilidad estan determinadas por la función de densidad de probabilidad y la función de distribución acumulada, las cuales asignan los valores correspondientes a la probabilidad de cada evento de la variable aleatoria; observandose que, la función de densidad asigna la probabilidad de que la variable tome un valor en particular, mientras que la función de distribución asigna la probabilidad acumulada para un grupo de eventos de la variable aleatoria.
+
+Teniendo en cuenta esto, la función de densidad puede ser definida como: 
+$$f_x(X)=P(X=x)$$
+Y la función de distribución acumulada se puede definir como:
+$$F_x(X)=P(X\leq x)$$
+
+Dado lo anterior, se tiene que las distribuciones de probabilidad pueden clasificarse de acuerdo con la forma de su función de distribución, pudiendo ser distribuciones discretas, en los casos donde esta función es discontinúa o segmentada y presenta saltos en sus valores, o distribuciones continúas cuando la función no presenta ningún tipo de interrupciones entre sus valores (Blanco et al., 2010).
+
+Asociadas a las distribuciones de probabilidad, para cada variable aleatoria es posible obtener el valor esperado que puede tomar dada la función de densidad con la que cuente, este valor es conocido como la _Esperanza_ y suele representarse como $E[X]$, y se puede definir como:
+$$E[X]=\sum_{i=1}^n x_i f_x(X)$$
+
+Igualmente, a partir de la función de densidad tambien puede obtenerse la medida de variación de la variable aleatoria, la cual se conoce como la _Varianza_ y se suele representar como $VAR[X]$ o $V[X]$, y se puede definir como:
+$$V[X]=E[(x-E[X])^2]$$
+Dada esta expresión, se tiene entonces que la varianza es igual a:
+$$V[X]=E[x^2]-E[X]^2$$
+
+# Distribuciones discretas
+
+## Distribución uniforme
+
+**Función de densidad**
+$$f_x(X)=\frac{1}{N}$$
+
+### Esperanza uniforme
+
+Siguiendo la definición inicial dada para la esperanza de una distribución de probabilidad se puede demostrar que para la distribución uniforme su esperanza se definir como:
+
+$$E[X] = \frac{N+1}{2}$$
+Esto teniendo en cuenta que, al reemplazar por la función de densidad de esta distribución se encuentra que la esperaza es igual a:
+$$E[X]=\sum_{i=1}^N x_i \frac{1}{N}$$
+A partir de lo cual, y contemplando que la sumatoria puede concebirse como una progresión aritmetica donde:
+$$\sum_i^na=\frac{n(n+1)}{2}$$
+Se tiene entonces que, al reemplazar este termino por la sumatoria, la esperanza es igual a:
+$$E[X]=\frac{N(N+1)}{2} \frac{1}{N}$$
+De esta expresión se cancelan las N y se tiene entonces que:
+$$E[X]=\frac{N+1}{2}$$
+
+### Varianza uniforme
+
+$$V[X]=\frac{N^2+1}{12}$$
+## Distribución bernoulli
+
+## Distribución binomial
+
+**Función de densidad**
+$$f_x(X)= \begin{pmatrix}n \\ x \end{pmatrix}p^x(1-p)^{n-x}$$
+
+### Esperanza binomial
+
+Siguiendo la definición de la esperanza para las distribuciones de probabilidad se puede demostrar que para la distribución binomial su esperanza se definir como:
+$$E[X]=np$$
+Esto teniendo en cuenta que, al reemplazar por la función de densidad de esta distribución se encuentra que la esperaza es igual a:
+$$E[X]=\sum_{i=1}^nx_i \begin{pmatrix}n \\ x \end{pmatrix}p^x(1-p)^{n-x}$$
+Dado que uno de los terminos es una combinatoria o coeficiente binomial, el cual se define como:
+$$\begin{pmatrix} n \\ k \end{pmatrix}=\frac{n!}{k!(n-k)!}$$
+Al reemplazar se encuentra que:
+$$E[X]=\sum_{i=1}^nx_i\frac{n!}{x!(n-x)}p^x(1-p)^{n-x}$$
+lo cual, aplicando algunas de las propiedades de los coeficientes binomiales, puede reemplazarse por:
+$$E[X]=\sum_{i=1}^nx_i\frac{n}{x}\frac{(n-1)!}{(x-1)!((n-1)-(x-1))!}p^x(p-1)^{n-x}$$
+$$E[X]=\sum_{i=1}^nx_i\frac{n}{x}\begin{pmatrix}n-1 \\ x-1 \end{pmatrix}p^x(1-p)^{n-x}$$
+Dado esto, se procede a eliminar las $x$ y sacar a $n$ de la sumatoria por ser una constante, obteniendo:
+$$E[X]=n\sum_{i=1}^n\begin{pmatrix}n-1 \\ x-1 \end{pmatrix}p^{x}(1-p)^{n-x}$$
+Una vez obtenido esto, y aplicando el teorema generalizado del binomio que señala que:
+$$(a+b)^n=\sum_{i=0}^n \begin{pmatrix}n \\ i \end{pmatrix}a^ib^{n-i}$$
+Tomando que $i=x-1$, $a = p$ y $b=(1-p)$, se encuentra que:
+$$E[X]=n\sum_{i=0}^{n-1}\begin{pmatrix}n-1 \\ i \end{pmatrix}p^{i+1}(1-p)^{(n-1)-i}$$
+A partir de lo anterior, se procede a sacar una de las $p$ y mulriplicar $p^{i}$,encontrando:
+$$E[X]=np\sum_{i=0}^{n-1}\begin{pmatrix}n-1 \\ i \end{pmatrix}(p+1-p)^{n-1}$$
+Del resultado anterior, aplicando propiedades del coeficiente binomial y operando la última expresión, se tiene que:
+$$E[X]=np1^{n-1}$$
+Lo cual es igual a:
+$$E[X]=np$$
+
+### Varianza binomial
+$$V[X]=npq$$
+
